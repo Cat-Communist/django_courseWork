@@ -14,15 +14,15 @@ class SubscriptionType(models.Model):
 class Subscription(models.Model):
     type = models.ForeignKey("SubscriptionType", on_delete=models.CASCADE, null=True, verbose_name="Вид подписки")
     # Как хранить время подписки
-    duration = models.DurationField(null=True, verbose_name="Длительность")
+    duration = models.IntegerField(null=True, verbose_name="Длительность (дней)")
 
     class Meta:
         verbose_name = "Подписка"
         verbose_name_plural = "Подписки"
 
 class Movie(models.Model):
-    title = models.TextField(blank=True, verbose_name="Название")
-    category = models.ForeignKey("Category", on_delete=models.CASCADE, null=True, verbose_name="Жанр фильма")
+    title = models.TextField(null=True, blank=False, verbose_name="Название")
+    genre = models.ForeignKey("Genre", on_delete=models.CASCADE, null=True, verbose_name="Жанр фильма")
     duration = models.DurationField(null=True, verbose_name="Длительность")
     rating = models.FloatField(null=True, verbose_name="Оценка")
 
@@ -30,8 +30,8 @@ class Movie(models.Model):
         verbose_name = "Фильм"
         verbose_name_plural = "Фильмы"
 
-class Category(models.Model):
-    title = models.TextField(blank=True, verbose_name="Название")
+class Genre(models.Model):
+    title = models.TextField(null=True, blank=False, verbose_name="Название")
 
     def __str__(self) -> str:
         return self.title

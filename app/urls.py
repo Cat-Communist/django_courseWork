@@ -15,8 +15,18 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from cinema import views
+
+from rest_framework.routers import DefaultRouter
+from cinema.api import MovieViewset, SubscriptionViewset
+
+router = DefaultRouter()
+router.register("movies", MovieViewset, basename="movies")
+router.register("subscriptions", SubscriptionViewset, basename="subscriptions")
 
 urlpatterns = [
+    path('view-test', views.ShowMoviesView.as_view()),
     path('admin/', admin.site.urls),
+    path('api/', include(router.urls))
 ]

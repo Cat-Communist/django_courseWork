@@ -1,5 +1,5 @@
 from django.contrib import admin
-from cinema.models import Subscription, SubscriptionType, Movie, Category
+from cinema.models import Subscription, SubscriptionType, Movie, Genre
 
 # Register your models here.
 @admin.register(Subscription)
@@ -12,8 +12,8 @@ class SubscribtionTypeAdmin(admin.ModelAdmin):
 
 @admin.register(Movie)
 class MovieAdmin(admin.ModelAdmin):
-    list_display=["id", "title", "category", "duration", "rating"]
+    list_display=["id", "title", "genre", "duration", "rating"]
 
-@admin.register(Category)
+@admin.register(Genre)
 class CategoryAdmin(admin.ModelAdmin):
     list_display=["id", "title"]
