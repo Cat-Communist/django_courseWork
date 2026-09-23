@@ -26,7 +26,7 @@ router.register("movies", MovieViewset, basename="movies")
 router.register("subscriptions", SubscriptionViewset, basename="subscriptions")
 
 urlpatterns = [
-    path('view-test', views.ShowMoviesView.as_view()),
+    path('view-test/', views.ShowMoviesView.as_view()),
     path('admin/', admin.site.urls),
     path('api/', include(router.urls))
 ]
