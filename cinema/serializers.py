@@ -24,10 +24,10 @@ class SubscriptionSerializer(serializers.ModelSerializer):
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fileds = ["id", "username"]
+        fields = ["id", "username"]
 
 class UserSubscriptionSerializer(serializers.ModelSerializer):
-    user = UserSerializer
+    user = UserSerializer(read_only=True)
     class Meta:
         model = UserSubscription
         fields = "__all__"
