@@ -19,11 +19,14 @@ from django.urls import path, include
 from cinema import views
 
 from rest_framework.routers import DefaultRouter
-from cinema.api import MovieViewset, SubscriptionViewset
+from cinema.api import CategoryViewset, MovieViewset, SubscriptionTypeViewset, SubscriptionViewset, UserSubscriptionViewset
 
 router = DefaultRouter()
 router.register("movies", MovieViewset, basename="movies")
 router.register("subscriptions", SubscriptionViewset, basename="subscriptions")
+router.register("user-subscriptions", UserSubscriptionViewset, basename="user-subscriptions")
+router.register("subscription-types", SubscriptionTypeViewset, basename="subscription-types")
+router.register("categories", CategoryViewset, basename="categories")
 
 urlpatterns = [
     path('view-test/', views.ShowMoviesView.as_view()),
