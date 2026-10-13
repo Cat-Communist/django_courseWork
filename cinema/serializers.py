@@ -1,12 +1,7 @@
 from django.contrib.auth.models import User
 
 from rest_framework import serializers
-from cinema.models import Category, Movie, Subscription, SubscriptionType, UserSubscription
-
-class SubscriptionTypeSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = SubscriptionType
-        fields = "__all__"
+from cinema.models import Category, Category2Movie, Movie, Subscription, Subscription2Category, Subscription2User, UserProfile
 
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
@@ -14,11 +9,31 @@ class CategorySerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 class SubscriptionSerializer(serializers.ModelSerializer):
-    type = SubscriptionTypeSerializer(read_only=True)
     category = CategorySerializer(read_only=True)
     
     class Meta:
         model = Subscription
+        fields = "__all__"
+
+class Sub2CatSerializer(serializers.ModelSerializer):
+    subscription = SubscriptionSerializer(read_only=True)
+    category = CategorySerializer(read_only=True)
+
+    class Meta:
+        model = Subscription2Category
+        fields = "__all__"
+
+class MovieSerializer(serializers.ModelSerializer):    
+    class Meta:
+        model = Movie
+        fields = "__all__"
+
+class Category2MovieSerializer(serializers.ModelSerializer):
+    movie = MovieSerializer
+    category = CategorySerializer
+    
+    class Meta:
+        model = Category2Movie
         fields = "__all__"
 
 class UserSerializer(serializers.ModelSerializer):
@@ -26,15 +41,17 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = ["id", "username"]
 
-class UserSubscriptionSerializer(serializers.ModelSerializer):
-    user = UserSerializer(read_only=True)
-    class Meta:
-        model = UserSubscription
-        fields = "__all__"
-
-class MovieSerializer(serializers.ModelSerializer):
-    category = CategorySerializer(read_only=True)
+class UserProfileSerializer(serializers.ModelSerializer):
+    user = UserSerializer
     
     class Meta:
-        model = Movie
+        model = UserProfile
+        fields = "__all__"
+
+class Subscription2UserSerializer(serializers.ModelSerializer):
+    subscription = SubscriptionSerializer
+    user = UserProfileSerializer
+
+    class Meta:
+        model = Subscription2User
         fields = "__all__"
