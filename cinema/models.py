@@ -18,6 +18,7 @@ class Movie(models.Model):
     title = models.TextField(null=True, verbose_name="Название")
     duration = models.DurationField(null=True, verbose_name="Длительность")
     description = models.TextField(null=True, verbose_name="Описание")
+    poster = models.ImageField(null=True, upload_to="movie-posters", verbose_name="Постер фильма")
 
     def __str__(self) -> str:
         return self.title

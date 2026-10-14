@@ -9,15 +9,15 @@ class CategorySerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 class SubscriptionSerializer(serializers.ModelSerializer):
-    category = CategorySerializer(read_only=True)
+    # category = CategorySerializer(read_only=True)
     
     class Meta:
         model = Subscription
         fields = "__all__"
 
 class Sub2CatSerializer(serializers.ModelSerializer):
-    subscription = SubscriptionSerializer(read_only=True)
-    category = CategorySerializer(read_only=True)
+    # subscription = SubscriptionSerializer(read_only=True)
+    # category = CategorySerializer(read_only=True)
 
     class Meta:
         model = Subscription2Category
@@ -29,8 +29,8 @@ class MovieSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 class Category2MovieSerializer(serializers.ModelSerializer):
-    movie = MovieSerializer
-    category = CategorySerializer
+    # movie = MovieSerializer(read_only=True)
+    # category = CategorySerializer(read_only=True)
     
     class Meta:
         model = Category2Movie
@@ -41,16 +41,18 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = ["id", "username"]
 
+# class RoleSerializer(serializers.ModelField)
+
 class UserProfileSerializer(serializers.ModelSerializer):
-    user = UserSerializer
+    # user = UserSerializer(read_only=True)
     
     class Meta:
         model = UserProfile
         fields = "__all__"
 
 class Subscription2UserSerializer(serializers.ModelSerializer):
-    subscription = SubscriptionSerializer
-    user = UserProfileSerializer
+    # subscription = SubscriptionSerializer(read_only=True)
+    # user = UserProfileSerializer(read_only=True)
 
     class Meta:
         model = Subscription2User

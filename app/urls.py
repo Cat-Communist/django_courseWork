@@ -20,6 +20,8 @@ from cinema import views
 
 from rest_framework.routers import DefaultRouter
 from cinema.api import Category2MovieViewset, CategoryViewset, MovieViewset, Sub2CatViewset, Subscription2UserViewset, SubscriptionViewset, UserProfileViewset
+from django.conf.urls.static import static
+from django.conf import settings
 
 router = DefaultRouter()
 router.register("movies", MovieViewset, basename="movies")
@@ -34,4 +36,4 @@ urlpatterns = [
     path('view-test/', views.ShowMoviesView.as_view()),
     path('admin/', admin.site.urls),
     path('api/', include(router.urls))
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
