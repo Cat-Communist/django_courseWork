@@ -2,4 +2,6 @@ __pycache__
 local.py
 *.sqlite3
 *.pyc
-.vscode 
+.vscode
+media
+static

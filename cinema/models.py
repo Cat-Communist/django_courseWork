@@ -3,6 +3,7 @@ from django.utils import timezone
 from django.db import models
 
 # Create your models here.
+
 # class SubscriptionType(models.Model):
 #     title = models.TextField(null=True, blank=False, verbose_name="Название")
 #     duration = models.IntegerField(null=True, verbose_name="Длительность (дней)")
