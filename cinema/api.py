@@ -18,6 +18,7 @@ class MovieViewset(
     mixins.RetrieveModelMixin,
     mixins.CreateModelMixin,
     mixins.UpdateModelMixin,
+    mixins.DestroyModelMixin,
     GenericViewSet
 ):
     queryset = Movie.objects.all()
