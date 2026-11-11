@@ -47,6 +47,7 @@ class CategoryViewset(
     mixins.RetrieveModelMixin,
     mixins.CreateModelMixin,
     mixins.UpdateModelMixin, 
+    mixins.DestroyModelMixin,
     GenericViewSet
 ):
     queryset = Category.objects.all()
@@ -57,6 +58,7 @@ class SubscriptionViewset(
     mixins.CreateModelMixin,
     mixins.UpdateModelMixin,
     mixins.RetrieveModelMixin,
+    mixins.DestroyModelMixin,
     GenericViewSet
 ):
     queryset = Subscription.objects.all()

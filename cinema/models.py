@@ -76,8 +76,7 @@ class Subscription2User(models.Model):
     user = models.ForeignKey("auth.User", on_delete=models.CASCADE, null=True, verbose_name="Пользователь")
     subscription = models.ForeignKey("Subscription", on_delete=models.CASCADE, null=True, verbose_name="Подписка")
     date_subscription = models.DateField(default=timezone.now, verbose_name="Дата оформления подписки")
-    # is_active = models.BooleanField(null=True, default=True, verbose_name="Статус подписки")
-
+    
     class Meta:
         verbose_name = "Подписка пользователя"
         verbose_name_plural = "Подписки пользователей"
