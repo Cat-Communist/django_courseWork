@@ -16,7 +16,7 @@ class BaseViewsetTestCase(TestCase):
         self.client = APIClient()
 
     # @staticmethod
-    def instantiate(self, _quantity = None, **kwargs):
+    def instantiate(self, _quantity=None, **kwargs):
         return baker.make(self.model, _quantity, **kwargs)
 
 class MovieViewsetTestCase(BaseViewsetTestCase):
